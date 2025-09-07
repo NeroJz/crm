@@ -2,4 +2,13 @@
 
 
 ### User
-GET {{HOST}}/user
+GET {{HOST}}/users
+
+### Create User
+POST {{HOST}}/users
+Content-Type: application/json
+
+{
+  "name": "test002",
+  "email": "test002@test.com"
+}
