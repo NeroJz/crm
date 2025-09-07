@@ -1,8 +1,10 @@
 @HOST=http://localhost:3000
 
-
 ### User
 GET {{HOST}}/users
+
+### User
+GET {{HOST}}/users/username/test001@test.com
 
 ### Create User
 POST {{HOST}}/users
