@@ -1,4 +1,10 @@
 @HOST=http://localhost:3000
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QwMDFAdGVzdC5jb20iLCJzdWIiOiIwODFjN2JlYi1jYzcxLTRlZWEtYmMyZi1hMjY1OTMzOGRmODYiLCJpYXQiOjE3NTc0Mjk4MTIsImV4cCI6MTc1NzQyOTg3Mn0.0Io3haDll8Gcf0rOGDZeDYhYh3p4q-RsPtUekUY7AlA
+
+### Get Proile
+GET {{HOST}}/profile
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
 
 ### Auth Login
 POST {{HOST}}/auth/login
