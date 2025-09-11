@@ -18,3 +18,12 @@ Content-Type: application/json
 ### Auth Logout
 POST {{HOST}}/auth/logout
 Content-Type: application/json
+
+### SignUp
+POST {{HOST}}/auth/signup
+Content-Type: application/json
+
+{
+  "email": "test001@test.com",
+  "password": "Crm123!@#"
+}
