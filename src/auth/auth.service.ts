@@ -6,9 +6,10 @@ import { createHmac } from 'crypto';
 
 import {
   SignUpCommand,
-  AdminConfirmSignUpRequest,
   CognitoIdentityProviderClient,
-  AdminConfirmSignUpCommand
+  AdminConfirmSignUpCommand,
+  InitiateAuthCommand,
+  AuthFlowType
 } from '@aws-sdk/client-cognito-identity-provider';
 import { ConfigService } from '@nestjs/config';
 
@@ -46,10 +47,16 @@ export class AuthService {
       .digest('base64')
   }
 
-  async signup(user: any) {
+  private getIdentityClient(): CognitoIdentityProviderClient {
     const client = new CognitoIdentityProviderClient({
       region: this.configService.get<string>('AWS_REGION'),
     });
+
+    return client;
+  }
+
+  async signup(user: any) {
+    const client = this.getIdentityClient();
 
     let clientId = this.configService.get<string>('COGNITO_CLIENT_ID');
     let options = {
@@ -76,5 +83,26 @@ export class AuthService {
     }
 
     return { sid: signUpResult.UserSub || null };
+  }
+
+  async authenticate(username: string, password): Promise<any> {
+    try {
+      const client = this.getIdentityClient();
+      let clientId = this.configService.get<string>('COGNITO_CLIENT_ID');
+      const authCommand = new InitiateAuthCommand({
+        AuthFlow: AuthFlowType.USER_PASSWORD_AUTH,
+        ClientId: clientId,
+        AuthParameters: {
+          USERNAME: username,
+          PASSWORD: password,
+          SECRET_HASH: this.getSecretHash(username)
+        }
+      });
+
+      const response = await client.send(authCommand);
+      return response.AuthenticationResult || null;
+    } catch (err) {
+      return null;
+    }
   }
 }

@@ -27,3 +27,12 @@ Content-Type: application/json
   "email": "test001@test.com",
   "password": "Crm123!@#"
 }
+
+### Login
+POST {{HOST}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "test001@test.com",
+  "password": "Crm123!@#"
+}
