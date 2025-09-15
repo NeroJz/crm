@@ -12,6 +12,8 @@ import {
   AuthFlowType
 } from '@aws-sdk/client-cognito-identity-provider';
 import { ConfigService } from '@nestjs/config';
+import { User } from 'src/users/entities/user.entity';
+import { UpdateUserDto } from 'src/users/dto/update-user.dto';
 
 
 @Injectable()
@@ -70,19 +72,40 @@ export class AuthService {
 
     let signUpResult = await client.send(signUpCommand);
 
+    let dbUser: User | null = null;
     if (signUpResult && signUpResult.UserSub) {
-      let userPoolId = this.configService.get<string>('COGNITO_USER_POOL_ID')!;
-      let username = user.email;
 
-      let confirmCommand = new AdminConfirmSignUpCommand({
-        UserPoolId: userPoolId,
-        Username: username
-      });
+      // Insert to user table
+      dbUser = await this.usersService.findOneByUsername(user.email);
 
-      await client.send(confirmCommand);
+      if (!dbUser) {
+        dbUser = await this.usersService.create({
+          name: user.email,
+          email: user.email,
+          sid: signUpResult.UserSub
+        });
+      } else {
+        if (dbUser.sid !== signUpResult.UserSub) {
+          let updateUserDto: UpdateUserDto = { ...dbUser, sid: signUpResult.UserSub };
+          dbUser = await this.usersService.update(dbUser.id, updateUserDto);
+        }
+      }
+
+      // Confirm the user in cognito
+      if (dbUser) {
+        let userPoolId = this.configService.get<string>('COGNITO_USER_POOL_ID')!;
+        let username = user.email;
+
+        let confirmCommand = new AdminConfirmSignUpCommand({
+          UserPoolId: userPoolId,
+          Username: username
+        });
+
+        await client.send(confirmCommand);
+      }
     }
 
-    return { sid: signUpResult.UserSub || null };
+    return dbUser;
   }
 
   async authenticate(username: string, password): Promise<any> {
