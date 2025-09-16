@@ -1,5 +1,5 @@
 @HOST=http://localhost:3000
-@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QwMDFAdGVzdC5jb20iLCJzdWIiOiIwODFjN2JlYi1jYzcxLTRlZWEtYmMyZi1hMjY1OTMzOGRmODYiLCJpYXQiOjE3NTc0Mjk4MTIsImV4cCI6MTc1NzQyOTg3Mn0.0Io3haDll8Gcf0rOGDZeDYhYh3p4q-RsPtUekUY7AlA
+@TOKEN=eyJraWQiOiIwV0FQTVRmUHc4VzJsTHdGZmQ1Qkl2bjQ5Zko3WTd0eW9YbjdnNk8wWEVrPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGhlYXN0LTEuYW1hem9uYXdzLmNvbVwvYXAtc291dGhlYXN0LTFfeFpBSTRzSmxpIiwiY2xpZW50X2lkIjoiNzR2YWRqdGE1aDJuMzM4ZzFrOGZyYmExZGciLCJvcmlnaW5fanRpIjoiMDlkODk4ZTYtOTRmYy00NzllLTg5ZDMtZDg1MDk5OTkyYzg5IiwiZXZlbnRfaWQiOiI5ZTAzODJjOS05YTkwLTQwNGQtYTE0NC04NTRjYzNkMTg0YzciLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIiwiYXV0aF90aW1lIjoxNzU3OTk5ODcyLCJleHAiOjE3NTgwMDM0NzIsImlhdCI6MTc1Nzk5OTg3MiwianRpIjoiNDc1YTExODAtN2ZkYS00ZWZlLWFlOGQtZmU2ZDg1MmEyN2Y3IiwidXNlcm5hbWUiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UifQ.sacPwyk4tywQ58yon5vOijO-hzUGhFBkPwydofJj6r_VutN9c4u1FZ9NkqXiwC6UlvZ0XDrqZljD1Wzp5ibo8IAh1Jne98yiM5DZsgMolRGPhy0WDXzwV2Ybo6htISre3pJFV8AvS_U_-43X_5E2lFvUDc3l6vsFgvvITC5P4-cTcL1KE4-qCutGt4Z5C-5ODki8Bv4nC03qJDJm3bHVCPN6RWyQo68nVF814S6o8ZP7gMjdgKUVWIS16H8esyqonhZc1pFEVNL9BdV4LWBM9xZKdZvbIRvqXauz6wNa06do8bYWQ9q0VbTtlWU_vgMgNK2BFHi8uhypS8ZB8ZMR0Q
 
 ### Get Proile
 GET {{HOST}}/profile
@@ -18,3 +18,21 @@ Content-Type: application/json
 ### Auth Logout
 POST {{HOST}}/auth/logout
 Content-Type: application/json
+
+### SignUp
+POST {{HOST}}/auth/signup
+Content-Type: application/json
+
+{
+  "email": "test001@test.com",
+  "password": "Crm123!@#"
+}
+
+### Login
+POST {{HOST}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "test001@test.com",
+  "password": "Crm123!@#"
+}

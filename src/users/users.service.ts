@@ -32,7 +32,15 @@ export class UsersService {
     return `This action returns a #${id} user`;
   }
 
-  async findOneByUsername(username: string) {
+  async findOneBySid(sid: string): Promise<User | null> {
+    const user = await this.userRepository.findOneBy({
+      sid: sid
+    });
+
+    return user;
+  }
+
+  async findOneByUsername(username: string): Promise<User | null> {
     const user = await this.userRepository.findOneBy({
       email: username
     });
@@ -40,8 +48,10 @@ export class UsersService {
     return user;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: string, updateUserDto: UpdateUserDto): Promise<User | null> {
+    await this.userRepository.update(id, updateUserDto);
+    const updatedUser = await this.userRepository.findOneBy({ id: id });
+    return updatedUser;
   }
 
   remove(id: number) {
