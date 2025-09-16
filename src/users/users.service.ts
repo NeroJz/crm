@@ -32,6 +32,14 @@ export class UsersService {
     return `This action returns a #${id} user`;
   }
 
+  async findOneBySid(sid: string): Promise<User | null> {
+    const user = await this.userRepository.findOneBy({
+      sid: sid
+    });
+
+    return user;
+  }
+
   async findOneByUsername(username: string): Promise<User | null> {
     const user = await this.userRepository.findOneBy({
       email: username
