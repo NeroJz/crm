@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from 'typeorm';
+import { Customer } from 'src/customers/entities/customer.entity';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from 'typeorm';
 
 export enum UserRole {
   NONE = 'none',
@@ -31,6 +32,12 @@ export class User {
     default: UserRole.NONE
   })
   role: string;
+
+  @OneToMany(
+    () => Customer,
+    (customer) => customer.owner
+  )
+  customers: Customer[];
 
   @CreateDateColumn()
   createdAt: string;

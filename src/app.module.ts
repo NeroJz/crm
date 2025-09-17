@@ -8,6 +8,7 @@ import { UsersModule } from './users/users.module';
 import { CustomersModule } from './customers/customers.module';
 import { ActivitiesModule } from './activities/activities.module';
 import { User } from './users/entities/user.entity';
+import { Customer } from './customers/entities/customer.entity';
 
 
 console.log(process.env.DB_USER);
@@ -25,9 +26,7 @@ console.log(process.env.DB_USER);
       username: process.env.DB_USER,
       password: process.env.DB_PWD,
       database: process.env.DB_NAME,
-      entities: [
-        User
-      ],
+      autoLoadEntities: true,
       synchronize: true
     }),
     AuthModule,
