@@ -7,8 +7,6 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { CustomersModule } from './customers/customers.module';
 import { ActivitiesModule } from './activities/activities.module';
-import { User } from './users/entities/user.entity';
-import { Customer } from './customers/entities/customer.entity';
 
 
 console.log(process.env.DB_USER);

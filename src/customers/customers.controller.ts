@@ -9,18 +9,12 @@ export class CustomersController {
 
   @Post()
   create(@Body() createCustomerDto: CreateCustomerDto) {
-    return {
-      msg: 'POST Customers activated'
-    };
-    // return this.customersService.create(createCustomerDto);
+    return this.customersService.create(createCustomerDto);
   }
 
   @Get()
   findAll() {
-    return {
-      msg: 'GET Customers activated'
-    };
-    // return this.customersService.findAll();
+    return this.customersService.findAll();
   }
 
   @Get(':id')

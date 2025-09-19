@@ -1,0 +1,18 @@
+@HOST=http://localhost:3000
+
+### GET all customers
+GET {{HOST}}/customers
+Content-Type: application/json
+
+
+### POST
+POST {{HOST}}/customers
+Content-Type: application/json
+
+{
+  "name": "MyPet Sdn Bhd",
+  "contactPerson": "Mrs. Lee",
+  "email": "admin@myshop.com",
+  "phone": "0165488133",
+  "address": "16 PSRN ABC, TMN DEF 16, 30100 IPOH"
+}

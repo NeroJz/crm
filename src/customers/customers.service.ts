@@ -1,15 +1,32 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
+import { Repository } from 'typeorm';
+import { Customer } from './entities/customer.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class CustomersService {
-  create(createCustomerDto: CreateCustomerDto) {
-    return 'This action adds a new customer';
+  constructor(
+    @InjectRepository(Customer)
+    private customerRepository: Repository<Customer>
+  ) { }
+
+  async create(createCustomerDto: CreateCustomerDto) {
+    const customer = await this.customerRepository
+      .create({
+        ...createCustomerDto
+      });
+
+    await this.customerRepository.save(customer);
+
+    return customer;
   }
 
-  findAll() {
-    return `This action returns all customers`;
+  async findAll() {
+    const customers = await this.customerRepository.find();
+
+    return customers;
   }
 
   findOne(id: number) {
