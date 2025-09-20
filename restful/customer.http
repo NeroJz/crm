@@ -4,6 +4,13 @@
 GET {{HOST}}/customers
 Content-Type: application/json
 
+### GET customer by id
+GET {{HOST}}/customers/9e128d74-9aef-4459-b501-419acee00755
+Content-Type: application/json
+
+### DELETE customer by id
+DELETE  {{HOST}}/customers/9e128d74-9aef-4459-b501-419acee00755
+Content-Type: application/json
 
 ### POST
 POST {{HOST}}/customers
