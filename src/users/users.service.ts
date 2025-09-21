@@ -28,8 +28,8 @@ export class UsersService {
     return this.userRepository.find();
   }
 
-  findOneById(id: number) {
-    return `This action returns a #${id} user`;
+  findOneById(id: string) {
+    return this.userRepository.findOneBy({ id });
   }
 
   async findOneBySid(sid: string): Promise<User | null> {

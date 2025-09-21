@@ -1,0 +1,33 @@
+@HOST=http://localhost:3000
+
+### GET all customers
+GET {{HOST}}/customers
+Content-Type: application/json
+
+### GET customer by id
+GET {{HOST}}/customers/9e128d74-9aef-4459-b501-419acee00755
+Content-Type: application/json
+
+### DELETE customer by id
+DELETE  {{HOST}}/customers/9e128d74-9aef-4459-b501-419acee00755
+Content-Type: application/json
+
+### POST
+POST {{HOST}}/customers
+Content-Type: application/json
+
+{
+  "name": "MyPet Sdn Bhd",
+  "contactPerson": "Mrs. Lee",
+  "email": "admin@myshop.com",
+  "phone": "0165488133",
+  "address": "16 PSRN ABC, TMN DEF 16, 30100 IPOH"
+}
+
+### POST
+PATCH {{HOST}}/customers/55354f9d-1a56-42f2-8945-dc318b0f49b5/assign
+Content-Type: application/json
+
+{
+  "userId": "cea1c182-763a-47a2-bf48-fe7519572434"
+}
