@@ -23,3 +23,11 @@ Content-Type: application/json
   "phone": "0165488133",
   "address": "16 PSRN ABC, TMN DEF 16, 30100 IPOH"
 }
+
+### POST
+PATCH {{HOST}}/customers/55354f9d-1a56-42f2-8945-dc318b0f49b5/assign
+Content-Type: application/json
+
+{
+  "userId": "cea1c182-763a-47a2-bf48-fe7519572434"
+}

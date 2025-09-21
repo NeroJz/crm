@@ -35,4 +35,9 @@ export class CustomersController {
   remove(@Param('id') id: string) {
     return this.customersService.remove(id);
   }
+
+  @Patch(':id/assign')
+  assign(@Param('id') id: string, @Body() updateCustomerDto: UpdateCustomerDto) {
+    return this.customersService.assign(id, updateCustomerDto);
+  }
 }
