@@ -29,6 +29,7 @@ export class Activity {
   type: string;
 
   @Column({
+    type: 'text',
     nullable: true
   })
   description?: string;
