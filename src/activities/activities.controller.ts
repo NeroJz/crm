@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Request } from '@nestjs/common';
 import { ActivitiesService } from './activities.service';
 import { CreateActivityDto } from './dto/create-activity.dto';
 import { UpdateActivityDto } from './dto/update-activity.dto';
+import { User } from 'src/users/entities/user.entity';
 
 @Controller('activities')
 export class ActivitiesController {
@@ -16,9 +17,12 @@ export class ActivitiesController {
   }
 
   @Get()
-  findAll() {
+  findAll(@Request() req) {
+    const user: User = req.user;
+    console.log(user);
     // return this.activitiesService.findAll();
     return {
+      userId: user.id,
       msg: 'GET Activities activated'
     };
   }

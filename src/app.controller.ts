@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common'
 import { LocalAuthGuard } from './auth/strategies/local.strategy';
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './auth/strategies/jwt.strategy';
-import { IdentityAuthGuard } from './auth/strategies/identity.strategy';
+import { IdentityAuthGuard, Public } from './auth/strategies/identity.strategy';
 
 
 export class IdentityUser {
@@ -21,6 +21,7 @@ export class AppController {
     return this.authService.signup(identityUser);
   }
 
+  @Public()
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Request() req) {
