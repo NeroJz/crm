@@ -9,11 +9,16 @@ export class ActivitiesController {
   constructor(private readonly activitiesService: ActivitiesService) { }
 
   @Post()
-  create(@Body() createActivityDto: CreateActivityDto) {
-    // return this.activitiesService.create(createActivityDto);
-    return {
-      msg: 'POST Activities activated'
-    };
+  create(
+    @Request() req,
+    @Body() createActivityDto: CreateActivityDto
+  ) {
+    const user: User = req.user;
+    if (user) {
+      createActivityDto.user = user;
+    }
+
+    return this.activitiesService.create(createActivityDto);
   }
 
   @Get()
