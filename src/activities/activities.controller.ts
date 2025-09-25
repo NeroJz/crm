@@ -14,11 +14,8 @@ export class ActivitiesController {
     @Body() createActivityDto: CreateActivityDto
   ) {
     const user: User = req.user;
-    if (user) {
-      createActivityDto.user = user;
-    }
 
-    return this.activitiesService.create(createActivityDto);
+    return this.activitiesService.create(createActivityDto, user);
   }
 
   @Get()
@@ -34,10 +31,7 @@ export class ActivitiesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    // return this.activitiesService.findOne(+id);
-    return {
-      msg: 'GET Activities by Id activated'
-    };
+    return this.activitiesService.findOne(id);
   }
 
   @Patch(':id')

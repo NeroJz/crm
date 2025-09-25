@@ -4,6 +4,5 @@ export class CreateActivityDto {
   type: string;
   description?: string;
   activity_date: Date;
-  customer_name: string;
-  user?: User
+  customer_id: string;
 }
