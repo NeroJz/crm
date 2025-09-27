@@ -21,12 +21,8 @@ export class ActivitiesController {
   @Get()
   findAll(@Request() req) {
     const user: User = req.user;
-    console.log(user);
-    // return this.activitiesService.findAll();
-    return {
-      userId: user.id,
-      msg: 'GET Activities activated'
-    };
+    // console.log(user);
+    return this.activitiesService.findAll();
   }
 
   @Get(':id')
@@ -43,10 +39,11 @@ export class ActivitiesController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    // return this.activitiesService.remove(+id);
-    return {
-      msg: 'DELETE Activities activated'
-    };
+  remove(
+    @Request() req,
+    @Param('id') id: string
+  ) {
+    const user: User = req.user;
+    return this.activitiesService.remove(id, user.id);
   }
 }

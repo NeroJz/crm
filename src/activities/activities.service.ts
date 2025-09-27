@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateActivityDto } from './dto/create-activity.dto';
 import { UpdateActivityDto } from './dto/update-activity.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -36,8 +36,9 @@ export class ActivitiesService {
     return { ...activity, customer: customer.id, user: user.id };
   }
 
-  findAll() {
-    return `This action returns all activities`;
+  async findAll() {
+    let activities = await this.activityRepository.find();
+    return activities;
   }
 
   async findOne(id: string) {
@@ -54,7 +55,23 @@ export class ActivitiesService {
     return `This action updates a #${id} activity`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} activity`;
+  async remove(id: string, user_id: string) {
+    let activity = await this.activityRepository
+      .findOne({
+        relations: {
+          user: true,
+        },
+        where: { id }
+      });
+
+    if (!activity) {
+      throw new NotFoundException('Activity not found.');
+    }
+
+    if (activity.user.id !== user_id) {
+      throw new ForbiddenException('You are not allowed to delete this activity.');
+    }
+
+    return await this.activityRepository.remove(activity);
   }
 }
