@@ -51,8 +51,17 @@ export class ActivitiesService {
     return activity;
   }
 
-  update(id: number, updateActivityDto: UpdateActivityDto) {
-    return `This action updates a #${id} activity`;
+  async update(id: string, updateActivityDto: UpdateActivityDto) {
+    let activity = await this.activityRepository
+      .findOneBy({ id });
+
+    if (!activity) {
+      throw new NotFoundException('Activity not found');
+    }
+
+    Object.assign(activity, updateActivityDto);
+
+    return this.activityRepository.save(activity);
   }
 
   async remove(id: string, user_id: string) {

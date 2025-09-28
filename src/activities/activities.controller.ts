@@ -32,10 +32,7 @@ export class ActivitiesController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateActivityDto: UpdateActivityDto) {
-    // return this.activitiesService.update(+id, updateActivityDto);
-    return {
-      msg: 'PUT Activities by ID activated'
-    };
+    return this.activitiesService.update(id, updateActivityDto);
   }
 
   @Delete(':id')
