@@ -9,6 +9,8 @@ import { CustomersModule } from './customers/customers.module';
 import { ActivitiesModule } from './activities/activities.module';
 import { APP_GUARD } from '@nestjs/core';
 import { IdentityAuthGuard } from './auth/strategies/identity.strategy';
+import { LeadModule } from './lead/lead.module';
+import { LeadModule } from './lead/lead.module';
 
 
 console.log(process.env.DB_USER);
@@ -32,7 +34,8 @@ console.log(process.env.DB_USER);
     AuthModule,
     UsersModule,
     CustomersModule,
-    ActivitiesModule
+    ActivitiesModule,
+    LeadModule
   ],
   controllers: [AppController],
   providers: [
