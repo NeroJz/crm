@@ -1,5 +1,6 @@
+import { Activity } from 'src/activities/entities/activity.entity';
 import { User } from 'src/users/entities/user.entity';
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 
 export enum Status {
@@ -50,6 +51,12 @@ export class Customer {
     { onDelete: 'SET NULL' }
   )
   owner: User;
+
+  @OneToMany(
+    () => Activity,
+    (activity) => activity.customer
+  )
+  activities: Activity[]
 
   @CreateDateColumn()
   createdAt: string;

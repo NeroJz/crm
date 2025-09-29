@@ -48,6 +48,15 @@ export class UsersService {
     return user;
   }
 
+  async findAllActivities(id: string) {
+    return this.userRepository.findOne({
+      where: { id },
+      relations: {
+        activities: true
+      }
+    });
+  }
+
   async update(id: string, updateUserDto: UpdateUserDto): Promise<User | null> {
     await this.userRepository.update(id, updateUserDto);
     const updatedUser = await this.userRepository.findOneBy({ id: id });

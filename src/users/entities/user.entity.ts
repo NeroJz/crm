@@ -1,3 +1,4 @@
+import { Activity } from 'src/activities/entities/activity.entity';
 import { Customer } from 'src/customers/entities/customer.entity';
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from 'typeorm';
 
@@ -38,6 +39,12 @@ export class User {
     (customer) => customer.owner
   )
   customers: Customer[];
+
+  @OneToMany(
+    () => Activity,
+    (activity) => activity.user
+  )
+  activities: Activity[];
 
   @CreateDateColumn()
   createdAt: string;

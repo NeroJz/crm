@@ -1,0 +1,43 @@
+@HOST=http://localhost:3000
+@TOKEN=eyJraWQiOiIwV0FQTVRmUHc4VzJsTHdGZmQ1Qkl2bjQ5Zko3WTd0eW9YbjdnNk8wWEVrPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGhlYXN0LTEuYW1hem9uYXdzLmNvbVwvYXAtc291dGhlYXN0LTFfeFpBSTRzSmxpIiwiY2xpZW50X2lkIjoiNzR2YWRqdGE1aDJuMzM4ZzFrOGZyYmExZGciLCJvcmlnaW5fanRpIjoiMTRkNzYxM2ItNjRjOC00ZWQ5LThkMDMtOTdmZWE5OTYwYjE2IiwiZXZlbnRfaWQiOiIxZjMxZDIwNC05ODczLTRjOTktYTAyYi05NTg2MTE3OGNhODIiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIiwiYXV0aF90aW1lIjoxNzU5MDMwNDgyLCJleHAiOjE3NTkwMzQwODIsImlhdCI6MTc1OTAzMDQ4MiwianRpIjoiMGM3ODU5YWEtYWQyYy00NTBhLWEwZTMtNjYzMTRmZWViZDg3IiwidXNlcm5hbWUiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UifQ.fBmvfVR6mhLCL80n5U6LQts4DI7HsnGQ-EE6njmJJT8m1PAsNgrlYHDzxDNyGDZMN6qhfwQuUTlq-p-WcjBYWkOnYHBUvnndMk1AWItruRuNI-BL1KEeL3M7Iug8GzyuSp-1TgHMmfRlyHckhRuybX2t0YBl1yzLZVpOzN6np3UAyMWRRX5LAVtGvSjw21ZX9gmnz3kAvXE18PN3PLs6uBA_zj6QMI63pTlYntxKCxHDOMckTG6actR4IrQm4chIOibKTeien8MCmOgu4tPu0mAeXpMMuQZdYbikEsEb3oRwIn2dwu7EtqMsDsizN7tzwYyHSm27g5SMys5P7n_XDw
+
+### GET
+GET {{HOST}}/activities
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+### Get activity by id
+GET {{HOST}}/activities/7d0a9b9a-aca1-43c3-b923-2645d8846417
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+### Create activity
+POST {{HOST}}/activities
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "type": "call",
+  "description": "Call MyPet",
+  "activity_date": "2026-09-26 13:30:00",
+  "customer_id": "55354f9d-1a56-42f2-8945-dc318b0f49b5"
+}
+
+### Update activity
+PATCH {{HOST}}/activities/7d0a9b9a-aca1-43c3-b923-2645d8846417
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "status": "done"
+}
+
+### Delete activity
+DELETE {{HOST}}/activities/169be911-bc0e-4e8d-9383-8b2c64257de6
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+### Find all activities by user
+GET {{HOST}}/users/activities
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
