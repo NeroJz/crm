@@ -1,7 +1,7 @@
 import { Activity } from 'src/activities/entities/activity.entity';
 import { Customer } from 'src/customers/entities/customer.entity';
 import { User } from 'src/users/entities/user.entity';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum LeadType {
   Lead = 'lead',
@@ -16,10 +16,14 @@ export class Lead {
   @Column()
   name: string;
 
-  @Column({ nullable: true })
+  @Column({
+    nullable: true
+  })
   email: string;
 
-  @Column({ nullable: true })
+  @Column({
+    nullable: true
+  })
   phone: string;
 
   @Column({
@@ -31,12 +35,19 @@ export class Lead {
 
   stage: string;
 
-  @Column()
+  @ManyToOne(
+    () => Customer
+  )
   customer: Customer;
 
-  @Column()
+  @ManyToOne(
+    () => User
+  )
   owner: User;
 
-  @Column()
+  @OneToMany(
+    () => Activity,
+    (activity) => activity.lead
+  )
   activities: Activity[]
 }
