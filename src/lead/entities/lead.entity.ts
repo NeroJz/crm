@@ -33,10 +33,13 @@ export class Lead {
   })
   type: string;
 
-  stage: string;
+  // stage: string;
 
   @ManyToOne(
-    () => Customer
+    () => Customer,
+    {
+      nullable: true
+    }
   )
   customer: Customer;
 

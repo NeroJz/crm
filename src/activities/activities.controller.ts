@@ -3,6 +3,7 @@ import { ActivitiesService } from './activities.service';
 import { CreateActivityDto } from './dto/create-activity.dto';
 import { UpdateActivityDto } from './dto/update-activity.dto';
 import { User } from 'src/users/entities/user.entity';
+import { UserContext } from 'src/decorators/user.decorator';
 
 @Controller('activities')
 export class ActivitiesController {
@@ -10,10 +11,9 @@ export class ActivitiesController {
 
   @Post()
   create(
-    @Request() req,
+    @UserContext() user,
     @Body() createActivityDto: CreateActivityDto
   ) {
-    const user: User = req.user;
 
     return this.activitiesService.create(createActivityDto, user);
   }
@@ -37,10 +37,9 @@ export class ActivitiesController {
 
   @Delete(':id')
   remove(
-    @Request() req,
+    @UserContext() user,
     @Param('id') id: string
   ) {
-    const user: User = req.user;
     return this.activitiesService.remove(id, user.id);
   }
 }

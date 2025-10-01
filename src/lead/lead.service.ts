@@ -1,11 +1,31 @@
 import { Injectable } from '@nestjs/common';
 import { CreateLeadDto } from './dto/create-lead.dto';
 import { UpdateLeadDto } from './dto/update-lead.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Lead } from './entities/lead.entity';
+import { Repository } from 'typeorm';
+import { User } from 'src/users/entities/user.entity';
 
 @Injectable()
 export class LeadService {
-  create(createLeadDto: CreateLeadDto) {
-    return 'This action adds a new lead';
+  constructor(
+    @InjectRepository(Lead)
+    private readonly leadRepository: Repository<Lead>,
+
+    @InjectRepository(User)
+    private readonly userRespository: Repository<User>
+  ) { }
+
+  async create(createLeadDto: CreateLeadDto, user: User) {
+    let lead = await this.leadRepository
+      .create({
+        ...createLeadDto,
+        owner: user
+      });
+
+    await this.leadRepository.save(lead);
+
+    return lead;
   }
 
   findAll() {

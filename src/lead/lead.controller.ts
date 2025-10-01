@@ -1,15 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Request } from '@nestjs/common';
 import { LeadService } from './lead.service';
 import { CreateLeadDto } from './dto/create-lead.dto';
 import { UpdateLeadDto } from './dto/update-lead.dto';
+import { UserContext } from 'src/decorators/user.decorator';
 
 @Controller('lead')
 export class LeadController {
-  constructor(private readonly leadService: LeadService) {}
+  constructor(private readonly leadService: LeadService) { }
 
   @Post()
-  create(@Body() createLeadDto: CreateLeadDto) {
-    return this.leadService.create(createLeadDto);
+  create(
+    @UserContext() user,
+    @Body() createLeadDto: CreateLeadDto
+  ) {
+    return this.leadService.create(createLeadDto, user);
   }
 
   @Get()
