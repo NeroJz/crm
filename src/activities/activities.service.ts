@@ -6,6 +6,8 @@ import { Activity } from './entities/activity.entity';
 import { Repository } from 'typeorm';
 import { Customer } from 'src/customers/entities/customer.entity';
 import { User } from 'src/users/entities/user.entity';
+import { AssignLeadActivityDto } from './dto/assign-lead-activity.dto';
+import { Lead } from 'src/lead/entities/lead.entity';
 
 @Injectable()
 export class ActivitiesService {
@@ -13,7 +15,9 @@ export class ActivitiesService {
     @InjectRepository(Activity)
     private readonly activityRepository: Repository<Activity>,
     @InjectRepository(Customer)
-    private readonly customerRepository: Repository<Customer>
+    private readonly customerRepository: Repository<Customer>,
+    @InjectRepository(Lead)
+    private readonly leadRepository: Repository<Lead>,
   ) { }
 
   async create(createActivityDto: CreateActivityDto, user: User) {
@@ -60,6 +64,26 @@ export class ActivitiesService {
     }
 
     Object.assign(activity, updateActivityDto);
+
+    return this.activityRepository.save(activity);
+  }
+
+  async assignLead(id: string, assignLeadActivityDto: AssignLeadActivityDto) {
+    let activity = await this.activityRepository
+      .findOneBy({ id });
+
+    if (!activity) {
+      throw new NotFoundException('Activity not found');
+    }
+
+    let lead = await this.leadRepository
+      .findOneBy({ id: assignLeadActivityDto.lead_id });
+
+    if (!lead) {
+      throw new NotFoundException('Lead not found');
+    }
+
+    activity.lead = lead;
 
     return this.activityRepository.save(activity);
   }

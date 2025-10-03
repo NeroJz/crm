@@ -3,6 +3,7 @@ import { LeadService } from './lead.service';
 import { CreateLeadDto } from './dto/create-lead.dto';
 import { UpdateLeadDto } from './dto/update-lead.dto';
 import { UserContext } from 'src/decorators/user.decorator';
+import { User } from 'src/users/entities/user.entity';
 
 @Controller('lead')
 export class LeadController {
@@ -10,7 +11,7 @@ export class LeadController {
 
   @Post()
   create(
-    @UserContext() user,
+    @UserContext() user: User,
     @Body() createLeadDto: CreateLeadDto
   ) {
     return this.leadService.create(createLeadDto, user);
