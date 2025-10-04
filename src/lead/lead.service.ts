@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateLeadDto } from './dto/create-lead.dto';
 import { UpdateLeadDto } from './dto/update-lead.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -28,19 +28,59 @@ export class LeadService {
     return lead;
   }
 
-  findAll() {
-    return `This action returns all lead`;
+  async findAll() {
+    return this.leadRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} lead`;
+  async findOne(id: string) {
+    let lead = await this.leadRepository.findOneBy({ id });
+
+    if (!lead) {
+      throw new NotFoundException('Lead not found.');
+    }
+
+    return lead;
   }
 
-  update(id: number, updateLeadDto: UpdateLeadDto) {
-    return `This action updates a #${id} lead`;
+  async findOneWithActivities(id: string) {
+    let lead = await this
+      .leadRepository
+      .findOne(
+        {
+          where: { id },
+          relations: {
+            activities: true
+          }
+        }
+      );
+
+    if (!lead) {
+      throw new NotFoundException('Lead not found.');
+    }
+
+    return lead;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} lead`;
+  async update(id: string, updateLeadDto: UpdateLeadDto) {
+    let lead = await this.leadRepository
+      .findOneBy({ id });
+
+    if (!lead) {
+      throw new NotFoundException('Lead not found.');
+    }
+
+    Object.assign(lead, updateLeadDto);
+
+    return this.leadRepository.save(lead);
+  }
+
+  async remove(id: string) {
+    let lead = await this.leadRepository.findOneBy({ id });
+
+    if (!lead) {
+      throw new NotFoundException('Lead not found.');
+    }
+
+    return this.leadRepository.remove(lead);
   }
 }
