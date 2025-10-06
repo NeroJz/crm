@@ -4,9 +4,9 @@ import { LeadController } from './lead.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Lead } from './entities/lead.entity';
 import { User } from 'src/users/entities/user.entity';
-import { UsersModule } from 'src/users/users.module';
-import { CustomersModule } from 'src/customers/customers.module';
 import { Customer } from 'src/customers/entities/customer.entity';
+import { Stage } from 'src/stage/entities/stage.entity';
+
 
 @Module({
   imports: [
@@ -14,6 +14,7 @@ import { Customer } from 'src/customers/entities/customer.entity';
       Lead,
       Customer,
       User,
+      Stage
     ]),
   ],
   controllers: [LeadController],

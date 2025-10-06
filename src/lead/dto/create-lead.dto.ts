@@ -3,5 +3,4 @@ export class CreateLeadDto {
   email?: string;
   phone?: string;
   type?: string;
-  stage?: string;
 }

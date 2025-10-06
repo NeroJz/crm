@@ -1,5 +1,6 @@
 import { Activity } from 'src/activities/entities/activity.entity';
 import { Customer } from 'src/customers/entities/customer.entity';
+import { Stage } from 'src/stage/entities/stage.entity';
 import { User } from 'src/users/entities/user.entity';
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -33,7 +34,10 @@ export class Lead {
   })
   type: string;
 
-  // stage: string;
+  @ManyToOne(
+    () => Stage
+  )
+  stage: Stage;
 
   @ManyToOne(
     () => Customer,
