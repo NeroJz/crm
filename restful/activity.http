@@ -1,5 +1,5 @@
 @HOST=http://localhost:3000
-@TOKEN=eyJraWQiOiIwV0FQTVRmUHc4VzJsTHdGZmQ1Qkl2bjQ5Zko3WTd0eW9YbjdnNk8wWEVrPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGhlYXN0LTEuYW1hem9uYXdzLmNvbVwvYXAtc291dGhlYXN0LTFfeFpBSTRzSmxpIiwiY2xpZW50X2lkIjoiNzR2YWRqdGE1aDJuMzM4ZzFrOGZyYmExZGciLCJvcmlnaW5fanRpIjoiMTRkNzYxM2ItNjRjOC00ZWQ5LThkMDMtOTdmZWE5OTYwYjE2IiwiZXZlbnRfaWQiOiIxZjMxZDIwNC05ODczLTRjOTktYTAyYi05NTg2MTE3OGNhODIiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIiwiYXV0aF90aW1lIjoxNzU5MDMwNDgyLCJleHAiOjE3NTkwMzQwODIsImlhdCI6MTc1OTAzMDQ4MiwianRpIjoiMGM3ODU5YWEtYWQyYy00NTBhLWEwZTMtNjYzMTRmZWViZDg3IiwidXNlcm5hbWUiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UifQ.fBmvfVR6mhLCL80n5U6LQts4DI7HsnGQ-EE6njmJJT8m1PAsNgrlYHDzxDNyGDZMN6qhfwQuUTlq-p-WcjBYWkOnYHBUvnndMk1AWItruRuNI-BL1KEeL3M7Iug8GzyuSp-1TgHMmfRlyHckhRuybX2t0YBl1yzLZVpOzN6np3UAyMWRRX5LAVtGvSjw21ZX9gmnz3kAvXE18PN3PLs6uBA_zj6QMI63pTlYntxKCxHDOMckTG6actR4IrQm4chIOibKTeien8MCmOgu4tPu0mAeXpMMuQZdYbikEsEb3oRwIn2dwu7EtqMsDsizN7tzwYyHSm27g5SMys5P7n_XDw
+@TOKEN=eyJraWQiOiIwV0FQTVRmUHc4VzJsTHdGZmQ1Qkl2bjQ5Zko3WTd0eW9YbjdnNk8wWEVrPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGhlYXN0LTEuYW1hem9uYXdzLmNvbVwvYXAtc291dGhlYXN0LTFfeFpBSTRzSmxpIiwiY2xpZW50X2lkIjoiNzR2YWRqdGE1aDJuMzM4ZzFrOGZyYmExZGciLCJvcmlnaW5fanRpIjoiOWMzNDYwYjQtY2FhZS00YjM2LTg3MTktNTY1NTI5YzAyNmU3IiwiZXZlbnRfaWQiOiIwYzk5YTcwOS03MWRiLTRkNjctOWZiNi0zMzJiODNmMmNmODgiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIiwiYXV0aF90aW1lIjoxNzU5NTAyODUyLCJleHAiOjE3NTk1MDY0NTIsImlhdCI6MTc1OTUwMjg1MiwianRpIjoiOGM3NmEzNmUtZDQ3Ny00MDU5LTk0ZmEtN2JmM2NiMDllMjk5IiwidXNlcm5hbWUiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UifQ.EgvQSvHX_gWf-IvdhRCheg8Fu-_xG_qkQ0uur2ghO9kqulwbPXSyFxbvoRjMB-jTNK0IqO_M73oLUR8AfT7g-39qO5fjowtUXioFCxgFZsdPhoELWPWJONMPg6wl0hiDRrcazmdVKh_5A4prNLOcZ_Z1xaGRn7qQecdD35CDAkmxsJdV85okMpZVp-vFzywLI48j0irzdPcQHEgK49vXMUIVgP4hJQ87fnu8MW9FLClzJdBKmsPYjZRpIaEVsrFE-emKL6Wq6kfntoAKtOXzxr8hmCNHDkKZ4KLvE3LAQw-se4Ny1PXQnGek18Gzhuay7RCs4RP-gsCQZdnZ5KIDXA
 
 ### GET
 GET {{HOST}}/activities
@@ -18,18 +18,27 @@ Content-Type: application/json
 
 {
   "type": "call",
-  "description": "Call MyPet",
-  "activity_date": "2026-09-26 13:30:00",
+  "description": "Call MyPet in Lead",
+  "activity_date": "2026-10-10 13:30:00",
   "customer_id": "55354f9d-1a56-42f2-8945-dc318b0f49b5"
 }
 
 ### Update activity
-PATCH {{HOST}}/activities/7d0a9b9a-aca1-43c3-b923-2645d8846417
+PATCH {{HOST}}/activities/3b937856-e86c-43b9-a6de-8e6f96bdb54b
 Authorization: Bearer {{TOKEN}}
 Content-Type: application/json
 
 {
   "status": "done"
+}
+
+### Assign Lead
+PATCH {{HOST}}/activities/3b937856-e86c-43b9-a6de-8e6f96bdb54b/lead
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "lead_id": "217a047a-ee70-4c8d-974f-0e1e66992609"
 }
 
 ### Delete activity

@@ -3,6 +3,8 @@ import { ActivitiesService } from './activities.service';
 import { CreateActivityDto } from './dto/create-activity.dto';
 import { UpdateActivityDto } from './dto/update-activity.dto';
 import { User } from 'src/users/entities/user.entity';
+import { UserContext } from 'src/decorators/user.decorator';
+import { AssignLeadActivityDto } from './dto/assign-lead-activity.dto';
 
 @Controller('activities')
 export class ActivitiesController {
@@ -10,10 +12,9 @@ export class ActivitiesController {
 
   @Post()
   create(
-    @Request() req,
+    @UserContext() user: User,
     @Body() createActivityDto: CreateActivityDto
   ) {
-    const user: User = req.user;
 
     return this.activitiesService.create(createActivityDto, user);
   }
@@ -35,12 +36,16 @@ export class ActivitiesController {
     return this.activitiesService.update(id, updateActivityDto);
   }
 
+  @Patch(':id/lead')
+  assignLead(@Param("id") id: string, @Body() assignLeadActivityDto: AssignLeadActivityDto) {
+    return this.activitiesService.assignLead(id, assignLeadActivityDto);
+  }
+
   @Delete(':id')
   remove(
-    @Request() req,
+    @UserContext() user: User,
     @Param('id') id: string
   ) {
-    const user: User = req.user;
     return this.activitiesService.remove(id, user.id);
   }
 }

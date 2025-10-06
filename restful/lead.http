@@ -1,0 +1,35 @@
+@HOST=http://localhost:3000
+@TOKEN=eyJraWQiOiIwV0FQTVRmUHc4VzJsTHdGZmQ1Qkl2bjQ5Zko3WTd0eW9YbjdnNk8wWEVrPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGhlYXN0LTEuYW1hem9uYXdzLmNvbVwvYXAtc291dGhlYXN0LTFfeFpBSTRzSmxpIiwiY2xpZW50X2lkIjoiNzR2YWRqdGE1aDJuMzM4ZzFrOGZyYmExZGciLCJvcmlnaW5fanRpIjoiYTBjYTEyMzUtYmIyYi00ZTdhLWJhMTYtNWJjYzkzZjJlODlkIiwiZXZlbnRfaWQiOiI1ZDZkYmQzYS1iZDQ4LTRiNjQtYTk0YS0zYjAwYjYwMGU1MDkiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIiwiYXV0aF90aW1lIjoxNzU5NTc1NTc1LCJleHAiOjE3NTk1NzkxNzUsImlhdCI6MTc1OTU3NTU3NSwianRpIjoiNDMxNDFlYTgtMjc4Ny00NDdhLWExNzMtZThiYjkyYTQ0NGMxIiwidXNlcm5hbWUiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UifQ.FVqX-fQNJKcWG4EZlxsTGthunCLV8ooost8SUPLwc-niHgn3nv3jKvs3WZ5i3La9hFVMx2CyWHzSyjqOjBpcjrZKdfgeBPHPy4T5m-s7ZfFfcNNIdpQJPZS0fxpwRsUVDTv6mgVY55BxEnt_b5-tHuwmfvG3vnJgQka1DRdDtHxj7cjHH7EtqRKI6KMQYSAnXb7EmuLxQ9M6wFB8nB1FzPrewttTXFolofDcndKO8jQrXPy6Uu9DLbyNrX3zte8WRbDGfrWu0eY7RLTbLEOA7dL5ZvsHY1KZ8LAyxto0RBfNrkjllOfL5unwdvHa403LL1xdRsxoEm8JO98DL6VB6g
+
+
+### Create Lead
+POST {{HOST}}/lead
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "My Tech",
+  "email": "mytech@test.com",
+  "phone": "0165488122"
+}
+
+### Get leads
+GET {{HOST}}/lead
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+### Get lead by ID
+GET {{HOST}}/lead/c84ade5b-3c8a-43f9-9a33-608f1f9456d2
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+### Get lead by ID and activities
+GET {{HOST}}/lead/217a047a-ee70-4c8d-974f-0e1e66992609/activities
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+
+### DELETE lead by ID
+DELETE {{HOST}}/lead/3239f79c-0d7d-4739-8769-c03c7fb329b9
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
