@@ -1,0 +1,37 @@
+@HOST=http://localhost:3000
+@TOKEN=eyJraWQiOiIwV0FQTVRmUHc4VzJsTHdGZmQ1Qkl2bjQ5Zko3WTd0eW9YbjdnNk8wWEVrPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGhlYXN0LTEuYW1hem9uYXdzLmNvbVwvYXAtc291dGhlYXN0LTFfeFpBSTRzSmxpIiwiY2xpZW50X2lkIjoiNzR2YWRqdGE1aDJuMzM4ZzFrOGZyYmExZGciLCJvcmlnaW5fanRpIjoiNjg1ZGI4OGItZWE0Yi00OTBkLWIyOTAtNjM0NzM2MzFhNjU5IiwiZXZlbnRfaWQiOiJjMTY0YTU0Ni0yZTI5LTRlNmItODMyZC01OWFlNjllYzczZTQiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIiwiYXV0aF90aW1lIjoxNzU5ODQ0OTY2LCJleHAiOjE3NTk4NDg1NjYsImlhdCI6MTc1OTg0NDk2NiwianRpIjoiZTFlZTk1NjUtNjkxYS00MGEzLTllZWYtMzY0NGZjOTFkYzJkIiwidXNlcm5hbWUiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UifQ.slvu_6X5wV380Li-Rug2w_fd4ZuBgvjR6dJcg63y2NC-zDwenDwB-jmwLwGU3JVlmzKSQjzviuQqIVFdfHrXz8Z3rDJf_tOtpnml1ltbaGJ4GKsAHsG_35puC5ybUF50fTnr7jXpi_qUdtbG9MEeGqUEuSbWivyu4LZbsbhPsQlFV-DuW90FZxrY--n_2Kw_Uu22mm_4IKvYLDxaiHAFFBMGxHrzn1AzxAIjpL3RH2Qxli6yDAb-GnnH3noOESwUacjKYUgDOgq-c_sRK9hIk5zhGkrsryP2pJZk8m33QmonfbI5DcP1jvCVfNpieMuL1ygM-y5iHFi_n3wL8yCGjw
+
+### Create pipeline
+POST {{HOST}}/pipelines
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "Partner Pipeline 123"
+}
+
+### Get all pipeline
+GET {{HOST}}/pipelines
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+### Get all pipeline by id
+GET {{HOST}}/pipelines/1c45e731-d254-4f22-ad1f-2bd1f34c42f9
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+
+### Update pipeline
+PATCH {{HOST}}/pipelines/1c45e731-d254-4f22-ad1f-2bd1f34c42f9
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "Partners Pipeline"
+}
+
+
+### Get all pipeline
+DELETE {{HOST}}/pipelines/1c92f13d-5b3e-4c10-b689-4ef975cb927f
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json

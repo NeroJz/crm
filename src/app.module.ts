@@ -15,6 +15,7 @@ import { Lead } from './lead/entities/lead.entity';
 import { Stage } from './stage/entities/stage.entity';
 import { Customer } from './customers/entities/customer.entity';
 import { User } from './users/entities/user.entity';
+import { PipelinesModule } from './pipelines/pipelines.module';
 
 
 console.log(process.env.DB_USER);
@@ -40,7 +41,8 @@ console.log(process.env.DB_USER);
     CustomersModule,
     ActivitiesModule,
     LeadModule,
-    StageModule
+    StageModule,
+    PipelinesModule
   ],
   controllers: [AppController],
   providers: [
