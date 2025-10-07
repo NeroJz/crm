@@ -10,6 +10,11 @@ import { ActivitiesModule } from './activities/activities.module';
 import { APP_GUARD } from '@nestjs/core';
 import { IdentityAuthGuard } from './auth/strategies/identity.strategy';
 import { LeadModule } from './lead/lead.module';
+import { StageModule } from './stage/stage.module';
+import { Lead } from './lead/entities/lead.entity';
+import { Stage } from './stage/entities/stage.entity';
+import { Customer } from './customers/entities/customer.entity';
+import { User } from './users/entities/user.entity';
 
 
 console.log(process.env.DB_USER);
@@ -28,13 +33,14 @@ console.log(process.env.DB_USER);
       password: process.env.DB_PWD,
       database: process.env.DB_NAME,
       autoLoadEntities: true,
-      synchronize: true
+      synchronize: true,
     }),
     AuthModule,
     UsersModule,
     CustomersModule,
     ActivitiesModule,
-    LeadModule
+    LeadModule,
+    StageModule
   ],
   controllers: [AppController],
   providers: [
