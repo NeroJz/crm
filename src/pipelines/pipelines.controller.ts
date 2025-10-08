@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, Put } from '@nestjs/common';
 import { PipelinesService } from './pipelines.service';
 import { CreatePipelineDto } from './dto/create-pipeline.dto';
 import { UpdatePipelineDto } from './dto/update-pipeline.dto';
+import { AssignStateDto } from './dto/assign-stage.dto';
 
 @Controller('pipelines')
 export class PipelinesController {
@@ -25,6 +26,14 @@ export class PipelinesController {
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePipelineDto: UpdatePipelineDto) {
     return this.pipelinesService.update(id, updatePipelineDto);
+  }
+
+  @Patch(':id/assign')
+  assign(
+    @Param('id') id: string,
+    @Body() assignStageDto: AssignStateDto
+  ) {
+    return this.pipelinesService.assign(id, assignStageDto);
   }
 
   @HttpCode(204)

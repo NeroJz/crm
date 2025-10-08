@@ -1,15 +1,19 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreatePipelineDto } from './dto/create-pipeline.dto';
 import { UpdatePipelineDto } from './dto/update-pipeline.dto';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { Pipeline } from './entities/pipeline.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { AssignStateDto } from './dto/assign-stage.dto';
+import { Stage } from 'src/stage/entities/stage.entity';
 
 @Injectable()
 export class PipelinesService {
   constructor(
     @InjectRepository(Pipeline)
-    private readonly pipelineRepository: Repository<Pipeline>
+    private readonly pipelineRepository: Repository<Pipeline>,
+    @InjectRepository(Stage)
+    private readonly stageRepository: Repository<Stage>,
   ) { }
 
 
@@ -51,6 +55,28 @@ export class PipelinesService {
     await this.pipelineRepository.save(pipeline);
 
     return pipeline;
+  }
+
+  async assign(id: string, assignStageDto: AssignStateDto) {
+    let pipeline = await this.pipelineRepository
+      .findOneBy({ id });
+
+    if (!pipeline) {
+      throw new NotFoundException('Pipeline not found')
+    }
+
+    await this.stageRepository.update(
+      { id: In(assignStageDto.stages) },
+      { pipeline: pipeline }
+    );
+
+    return this.pipelineRepository
+      .findOne({
+        where: { id },
+        relations: {
+          stages: true
+        }
+      });
   }
 
   async remove(id: string) {

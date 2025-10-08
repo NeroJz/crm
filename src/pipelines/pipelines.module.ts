@@ -3,11 +3,13 @@ import { PipelinesService } from './pipelines.service';
 import { PipelinesController } from './pipelines.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Pipeline } from './entities/pipeline.entity';
+import { Stage } from 'src/stage/entities/stage.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([
-      Pipeline
+      Pipeline,
+      Stage
     ]),
   ],
   controllers: [PipelinesController],
