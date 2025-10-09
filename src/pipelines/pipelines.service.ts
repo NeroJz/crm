@@ -4,7 +4,7 @@ import { UpdatePipelineDto } from './dto/update-pipeline.dto';
 import { In, Repository } from 'typeorm';
 import { Pipeline } from './entities/pipeline.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AssignStateDto } from './dto/assign-stage.dto';
+import { Assignment, AssignStateDto } from './dto/assign-stage.dto';
 import { Stage } from 'src/stage/entities/stage.entity';
 
 @Injectable()
@@ -65,9 +65,11 @@ export class PipelinesService {
       throw new NotFoundException('Pipeline not found')
     }
 
+    let assignment = assignStageDto.type;
+
     await this.stageRepository.update(
       { id: In(assignStageDto.stages) },
-      { pipeline: pipeline }
+      { pipeline: assignment === Assignment.ASSIGN ? pipeline : null }
     );
 
     return this.pipelineRepository

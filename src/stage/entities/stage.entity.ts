@@ -20,7 +20,7 @@ export class Stage {
     (pipeline) => pipeline.stages,
     { nullable: true }
   )
-  pipeline: Pipeline;
+  pipeline: Pipeline | null;
 
   @CreateDateColumn()
   createdAt: Date;
