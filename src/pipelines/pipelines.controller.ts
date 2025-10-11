@@ -23,6 +23,11 @@ export class PipelinesController {
     return this.pipelinesService.findOne(id);
   }
 
+  @Get(':id/stages')
+  findPipelineStages(@Param('id') id: string) {
+    return this.pipelinesService.findStages(id);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePipelineDto: UpdatePipelineDto) {
     return this.pipelinesService.update(id, updatePipelineDto);

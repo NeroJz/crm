@@ -42,6 +42,27 @@ export class PipelinesService {
     return pipeline;
   }
 
+  async findStages(id: string) {
+    let pipeline = await this.pipelineRepository
+      .findOne({
+        where: { id },
+        relations: {
+          stages: true
+        },
+        order: {
+          stages: {
+            seq: 'asc'
+          }
+        }
+      });
+
+    if (!pipeline) {
+      throw new NotFoundException('Pipeline not found')
+    }
+
+    return pipeline;
+  }
+
   async update(id: string, updatePipelineDto: UpdatePipelineDto) {
     let pipeline = await this.pipelineRepository
       .findOneBy({ id });
