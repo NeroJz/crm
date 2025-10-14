@@ -1,0 +1,56 @@
+@HOST=http://localhost:3000
+@TOKEN=eyJraWQiOiIwV0FQTVRmUHc4VzJsTHdGZmQ1Qkl2bjQ5Zko3WTd0eW9YbjdnNk8wWEVrPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGhlYXN0LTEuYW1hem9uYXdzLmNvbVwvYXAtc291dGhlYXN0LTFfeFpBSTRzSmxpIiwiY2xpZW50X2lkIjoiNzR2YWRqdGE1aDJuMzM4ZzFrOGZyYmExZGciLCJvcmlnaW5fanRpIjoiNmMxYTUxMjktYzM5Yy00NWRiLWFlNDEtNjUyNDc2NDBmM2FkIiwiZXZlbnRfaWQiOiIzN2Y5ZDljOS01ZmEyLTQ0YzUtYmZjNy04ZDJiYTUzOTliN2EiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIiwiYXV0aF90aW1lIjoxNzYwMTU0NjA3LCJleHAiOjE3NjAxNTgyMDcsImlhdCI6MTc2MDE1NDYwNywianRpIjoiYmI3ODhkY2ItYzQxNS00ODQ4LThmMTAtOWRiYjI1NzU0OThhIiwidXNlcm5hbWUiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UifQ.l8EE8YA2mxJ_Xk_sXIq52Vbyg1B_Gy_kgZtJjgAUjRUg3azGz-9k4GPCXfcUGjlPBeic0UVEK2LKkckc-M54pK8tO45bXTFsqN07THRsRdZnBN3Ionf15wPxC6kfBOWYeMXZLtLglEP1U1sEPR0hCFNpPMqeYAH3xSiJA3YH1wvjR7YrkjenEpjGZXZ5CccPgWC-bDeoTYNej6WkTug6pyg7aI7_OwW0n4x9II8Yp4rNvu9KnwgGAP10s7hOROfe6MnfyIEl_GLFcgXcd91MwOR-ErViCn4U-QAEFq4jYVy0524Z6-G9kIO3rSlLbcZ8_gLsDKPy3FaDO-mVBDO4jQ
+
+### Create pipeline
+POST {{HOST}}/pipelines
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "Partner Pipeline 123"
+}
+
+### Get all pipeline
+GET {{HOST}}/pipelines
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+### Get all pipeline by id
+GET {{HOST}}/pipelines/1c45e731-d254-4f22-ad1f-2bd1f34c42f9
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+
+### Get pipeline's stages by id
+GET {{HOST}}/pipelines/0ceaacef-ffc7-4079-a7aa-8c931410ae61/stages
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+
+### Update pipeline
+PATCH {{HOST}}/pipelines/1c45e731-d254-4f22-ad1f-2bd1f34c42f9
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "Partners Pipeline"
+}
+
+### Get all pipeline
+DELETE {{HOST}}/pipelines/1c92f13d-5b3e-4c10-b689-4ef975cb927f
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+### Assign
+PATCH {{HOST}}/pipelines/0ceaacef-ffc7-4079-a7aa-8c931410ae61/assign
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "type": "assign",
+  "stages": [
+    "dc81bcd2-311a-46c3-b2ff-29f556708717", 
+    "f84136fa-d6e2-4bc4-b4c7-66a456ef79f8", 
+    "5407f190-6878-4099-97ff-96993fb4c757"
+  ]
+}

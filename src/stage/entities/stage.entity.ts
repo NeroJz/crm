@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Pipeline } from 'src/pipelines/entities/pipeline.entity';
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class Stage {
@@ -13,4 +14,17 @@ export class Stage {
     default: 1
   })
   seq: number;
+
+  @ManyToOne(
+    () => Pipeline,
+    (pipeline) => pipeline.stages,
+    { nullable: true }
+  )
+  pipeline: Pipeline | null;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

@@ -11,10 +11,8 @@ import { APP_GUARD } from '@nestjs/core';
 import { IdentityAuthGuard } from './auth/strategies/identity.strategy';
 import { LeadModule } from './lead/lead.module';
 import { StageModule } from './stage/stage.module';
-import { Lead } from './lead/entities/lead.entity';
-import { Stage } from './stage/entities/stage.entity';
-import { Customer } from './customers/entities/customer.entity';
-import { User } from './users/entities/user.entity';
+import { PipelinesModule } from './pipelines/pipelines.module';
+import { LoggerModule } from 'nestjs-pino';
 
 
 console.log(process.env.DB_USER);
@@ -24,6 +22,16 @@ console.log(process.env.DB_USER);
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env'
+    }),
+    LoggerModule.forRoot({
+      pinoHttp: {
+        transport: {
+          target: 'pino-pretty',
+          options: {
+            colorize: true
+          }
+        }
+      }
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -40,7 +48,8 @@ console.log(process.env.DB_USER);
     CustomersModule,
     ActivitiesModule,
     LeadModule,
-    StageModule
+    StageModule,
+    PipelinesModule
   ],
   controllers: [AppController],
   providers: [
