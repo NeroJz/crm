@@ -6,6 +6,7 @@ import { Lead } from './entities/lead.entity';
 import { User } from 'src/users/entities/user.entity';
 import { Customer } from 'src/customers/entities/customer.entity';
 import { Stage } from 'src/stage/entities/stage.entity';
+import { Pipeline } from 'src/pipelines/entities/pipeline.entity';
 
 
 @Module({
@@ -14,7 +15,8 @@ import { Stage } from 'src/stage/entities/stage.entity';
       Lead,
       Customer,
       User,
-      Stage
+      Stage,
+      Pipeline
     ]),
   ],
   controllers: [LeadController],
