@@ -3,4 +3,5 @@ export class CreateLeadDto {
   email?: string;
   phone?: string;
   type?: string;
+  pipelineId?: string;
 }

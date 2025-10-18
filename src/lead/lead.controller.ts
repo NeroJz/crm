@@ -4,6 +4,7 @@ import { CreateLeadDto } from './dto/create-lead.dto';
 import { UpdateLeadDto } from './dto/update-lead.dto';
 import { UserContext } from 'src/decorators/user.decorator';
 import { User } from 'src/users/entities/user.entity';
+import { ConvertOpportunityDto } from './dto/convert-opportunity.dto';
 
 @Controller('lead')
 export class LeadController {
@@ -35,6 +36,14 @@ export class LeadController {
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateLeadDto: UpdateLeadDto) {
     return this.leadService.update(id, updateLeadDto);
+  }
+
+  @Patch(':id/convert-to-opportunity')
+  async convertToOpportunity(
+    @Param('id') id: string,
+    @Body() convertToOpportunityDto: ConvertOpportunityDto
+  ) {
+    return this.leadService.updateToOpportunity(id, convertToOpportunityDto);
   }
 
   @HttpCode(204)

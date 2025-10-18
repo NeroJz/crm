@@ -1,5 +1,6 @@
+
 @HOST=http://localhost:3000
-@TOKEN=eyJraWQiOiIwV0FQTVRmUHc4VzJsTHdGZmQ1Qkl2bjQ5Zko3WTd0eW9YbjdnNk8wWEVrPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGhlYXN0LTEuYW1hem9uYXdzLmNvbVwvYXAtc291dGhlYXN0LTFfeFpBSTRzSmxpIiwiY2xpZW50X2lkIjoiNzR2YWRqdGE1aDJuMzM4ZzFrOGZyYmExZGciLCJvcmlnaW5fanRpIjoiYTBjYTEyMzUtYmIyYi00ZTdhLWJhMTYtNWJjYzkzZjJlODlkIiwiZXZlbnRfaWQiOiI1ZDZkYmQzYS1iZDQ4LTRiNjQtYTk0YS0zYjAwYjYwMGU1MDkiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIiwiYXV0aF90aW1lIjoxNzU5NTc1NTc1LCJleHAiOjE3NTk1NzkxNzUsImlhdCI6MTc1OTU3NTU3NSwianRpIjoiNDMxNDFlYTgtMjc4Ny00NDdhLWExNzMtZThiYjkyYTQ0NGMxIiwidXNlcm5hbWUiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UifQ.FVqX-fQNJKcWG4EZlxsTGthunCLV8ooost8SUPLwc-niHgn3nv3jKvs3WZ5i3La9hFVMx2CyWHzSyjqOjBpcjrZKdfgeBPHPy4T5m-s7ZfFfcNNIdpQJPZS0fxpwRsUVDTv6mgVY55BxEnt_b5-tHuwmfvG3vnJgQka1DRdDtHxj7cjHH7EtqRKI6KMQYSAnXb7EmuLxQ9M6wFB8nB1FzPrewttTXFolofDcndKO8jQrXPy6Uu9DLbyNrX3zte8WRbDGfrWu0eY7RLTbLEOA7dL5ZvsHY1KZ8LAyxto0RBfNrkjllOfL5unwdvHa403LL1xdRsxoEm8JO98DL6VB6g
+@TOKEN=eyJraWQiOiIwV0FQTVRmUHc4VzJsTHdGZmQ1Qkl2bjQ5Zko3WTd0eW9YbjdnNk8wWEVrPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGhlYXN0LTEuYW1hem9uYXdzLmNvbVwvYXAtc291dGhlYXN0LTFfeFpBSTRzSmxpIiwiY2xpZW50X2lkIjoiNzR2YWRqdGE1aDJuMzM4ZzFrOGZyYmExZGciLCJvcmlnaW5fanRpIjoiZDY1YTVmYTItZmMxYS00ZDM1LTkxNWMtMWEwYzMzZWQ2ZDNlIiwiZXZlbnRfaWQiOiJiYmI4MmI5OC04Zjk2LTRmMzMtYWVjMC1kZjZkOTc5ZDhkM2YiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIiwiYXV0aF90aW1lIjoxNzYwNjE5NTAzLCJleHAiOjE3NjA2MjMxMDMsImlhdCI6MTc2MDYxOTUwMywianRpIjoiNWYzNDlhN2YtYzMyYS00NTViLTkwNDEtMzA4ZjkxNmQxZWU4IiwidXNlcm5hbWUiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UifQ.J31cj6AgIb_Rxy_A17SaFR3zZ_towUCoqbdBusdMFO6JYAk7hEYfpecJ4OfBRBcA0z24FSowv4oG_QTWn0vqfznyaLmJ7xUH4zxpoWzFBmRwCp9F62LENIYY206AHC2ais0kvxLtFCKuQn-q3SfPNyfSPn5bELtdMKFfu2Ramr6mU8fq4CB2d46sg-iFIMiM6DzECCCETo952tafr6r1ib2nYuLOxtGbb5TEFuWOJgMMzeivm5jxZua2YCQ4xkNXUbDncOsI-GuHurISQqs9htDAWXNuCyAS7hMedxc0_nmh2278VRfoNXBYJnmGgJ2bvQ318PPwCAWxbfCXhnQoXw
 
 
 ### Create Lead
@@ -10,7 +11,8 @@ Content-Type: application/json
 {
   "name": "My Tech",
   "email": "mytech@test.com",
-  "phone": "0165488122"
+  "phone": "0165488122",
+  "pipelineId": "0ceaacef-ffc7-4079-a7aa-8c931410ae61"
 }
 
 ### Get leads
@@ -19,7 +21,7 @@ Authorization: Bearer {{TOKEN}}
 Content-Type: application/json
 
 ### Get lead by ID
-GET {{HOST}}/lead/c84ade5b-3c8a-43f9-9a33-608f1f9456d2
+GET {{HOST}}/lead/0f5aeb91-1f2a-42b2-b569-f4b7dcfaca01
 Authorization: Bearer {{TOKEN}}
 Content-Type: application/json
 
@@ -27,6 +29,15 @@ Content-Type: application/json
 GET {{HOST}}/lead/217a047a-ee70-4c8d-974f-0e1e66992609/activities
 Authorization: Bearer {{TOKEN}}
 Content-Type: application/json
+
+### Convert lead to opportunity
+PATCH  {{HOST}}/lead/0f5aeb91-1f2a-42b2-b569-f4b7dcfaca01/convert-to-opportunity
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "pipelineId": "0ceaacef-ffc7-4079-a7aa-8c931410ae61"
+}
 
 
 ### DELETE lead by ID
