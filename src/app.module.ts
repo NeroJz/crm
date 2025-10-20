@@ -1,3 +1,5 @@
+import * as Joi from 'joi';
+
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
@@ -21,7 +23,19 @@ console.log(process.env.DB_USER);
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env'
+      envFilePath: '.env',
+      validationSchema: Joi.object({
+        DB_USER: Joi.string().required(),
+        DB_PWD: Joi.string().required(),
+        DB_NAME: Joi.string().required(),
+        JWT_SECRET: Joi.string().required(),
+        COGNITO_CLIENT_NAME: Joi.string().required(),
+        COGNITO_USER_POOL_ID: Joi.string().required(),
+        COGNITO_CLIENT_ID: Joi.string().required(),
+        COGNITO_CLIENT_SECRET: Joi.string().required(),
+        AWS_COGNITO_URL: Joi.string().required(),
+        AWS_REGION: Joi.string().required()
+      })
     }),
     LoggerModule.forRoot({
       pinoHttp: {
