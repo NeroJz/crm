@@ -13,7 +13,7 @@ export class OpportunityController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.opportunityService.findOne(+id);
+    return this.opportunityService.findOne(id);
   }
 
   @Patch(':id')

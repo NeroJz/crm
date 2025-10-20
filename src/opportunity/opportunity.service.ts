@@ -16,12 +16,17 @@ export class OpportunityService {
     return this.leadRepository.find({
       where: {
         type: LeadType.Opportunity
-      }
+      },
+      relations: [
+        'stage',
+        'pipeline',
+        'activities'
+      ]
     });
   }
 
-  async findOne(id: number) {
-    return `This action returns a #${id} opportunity`;
+  async findOne(id: string) {
+    return this.leadRepository.findOne({ where: { id } });
   }
 
   async update(id: number, updateOpportunityDto: UpdateOpportunityDto) {

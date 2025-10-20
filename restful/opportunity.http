@@ -7,3 +7,8 @@ GET {{HOST}}/opportunity
 Authorization: Bearer {{TOKEN}}
 Content-Type: application/json
 
+### Get all opportunity
+GET {{HOST}}/opportunity/0f5aeb91-1f2a-42b2-b569-f4b7dcfaca01
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
