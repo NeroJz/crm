@@ -28,12 +28,4 @@ export class OpportunityService {
   async findOne(id: string) {
     return this.leadRepository.findOne({ where: { id } });
   }
-
-  async update(id: number, updateOpportunityDto: UpdateOpportunityDto) {
-    return `This action updates a #${id} opportunity`;
-  }
-
-  async remove(id: number) {
-    return `This action removes a #${id} opportunity`;
-  }
 }
