@@ -1,46 +1,14 @@
-
 @HOST=http://localhost:3000
 @TOKEN=eyJraWQiOiIwV0FQTVRmUHc4VzJsTHdGZmQ1Qkl2bjQ5Zko3WTd0eW9YbjdnNk8wWEVrPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGhlYXN0LTEuYW1hem9uYXdzLmNvbVwvYXAtc291dGhlYXN0LTFfeFpBSTRzSmxpIiwiY2xpZW50X2lkIjoiNzR2YWRqdGE1aDJuMzM4ZzFrOGZyYmExZGciLCJvcmlnaW5fanRpIjoiYzY3NGRiN2EtOTQ3OC00YWUxLWI4YjgtNzI3NDNhMzI2YWE2IiwiZXZlbnRfaWQiOiIwYzUxOGYxOS02ZGM1LTRkZjAtYTU0MS1mMGE2NDAwMWZkMDgiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIiwiYXV0aF90aW1lIjoxNzYwOTQwNjU4LCJleHAiOjE3NjA5NDQyNTgsImlhdCI6MTc2MDk0MDY1OCwianRpIjoiYzFiZmUxNDgtYzc2My00NTQwLWExMWItMWM1NzliMWU2ZjcwIiwidXNlcm5hbWUiOiIyOWVhYzU5Yy02MDgxLTcwNDQtNWFiNS02ZmYzMWYxODA2M2UifQ.bFoGiHi637tElCDihXJY1x2aEq3Mn18-IbxHnxuNICunDjejWHSfulwyRBUXomJ2z25AtyXFnHwFJ_39EwqI7H8Ru4uxRxqgJDVgm39EdRLUABj0zQLb0ZjxICvLHT9siaVZly7rb200FZDK-zNw5RRXwb0cyztlfagXCkkDYvoatvbI994d0Owh_gEyDqOqL6qaN1CIIOu7h1E8bG2S5ifklVv7njTnS8REqaLKJj1ow_oAC6v4wKNitpoDBkpBzrJwGqOzE0OGTDMD5ya25h353ixFyvpKHdlIpHKLEAYDfFK7fUxvpq3JUhb7VqalVj_d0uNBRx0OZBEY1FSBig
 
 
-### Create Lead
-POST {{HOST}}/lead
+### Get all opportunity
+GET {{HOST}}/opportunity
 Authorization: Bearer {{TOKEN}}
 Content-Type: application/json
 
-{
-  "name": "My Tech",
-  "email": "mytech@test.com",
-  "phone": "0165488122",
-  "pipelineId": "0ceaacef-ffc7-4079-a7aa-8c931410ae61"
-}
-
-### Get leads
-GET {{HOST}}/lead
+### Get all opportunity
+GET {{HOST}}/opportunity/0f5aeb91-1f2a-42b2-b569-f4b7dcfaca01
 Authorization: Bearer {{TOKEN}}
 Content-Type: application/json
 
-### Get lead by ID
-GET {{HOST}}/lead/0f5aeb91-1f2a-42b2-b569-f4b7dcfaca01
-Authorization: Bearer {{TOKEN}}
-Content-Type: application/json
-
-### Get lead by ID and activities
-GET {{HOST}}/lead/217a047a-ee70-4c8d-974f-0e1e66992609/activities
-Authorization: Bearer {{TOKEN}}
-Content-Type: application/json
-
-### Convert lead to opportunity
-PATCH  {{HOST}}/lead/0f5aeb91-1f2a-42b2-b569-f4b7dcfaca01/convert-to-opportunity
-Authorization: Bearer {{TOKEN}}
-Content-Type: application/json
-
-{
-  "pipelineId": "0ceaacef-ffc7-4079-a7aa-8c931410ae61"
-}
-
-
-### DELETE lead by ID
-DELETE {{HOST}}/lead/3239f79c-0d7d-4739-8769-c03c7fb329b9
-Authorization: Bearer {{TOKEN}}
-Content-Type: application/json

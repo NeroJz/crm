@@ -46,7 +46,11 @@ export class LeadService {
   }
 
   async findAll() {
-    return this.leadRepository.find();
+    return this.leadRepository.find({
+      where: {
+        type: LeadType.Lead
+      }
+    });
   }
 
   async findOne(id: string) {

@@ -15,6 +15,7 @@ import { LeadModule } from './lead/lead.module';
 import { StageModule } from './stage/stage.module';
 import { PipelinesModule } from './pipelines/pipelines.module';
 import { LoggerModule } from 'nestjs-pino';
+import { OpportunityModule } from './opportunity/opportunity.module';
 
 
 console.log(process.env.DB_USER);
@@ -63,7 +64,8 @@ console.log(process.env.DB_USER);
     ActivitiesModule,
     LeadModule,
     StageModule,
-    PipelinesModule
+    PipelinesModule,
+    OpportunityModule
   ],
   controllers: [AppController],
   providers: [
