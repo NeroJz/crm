@@ -26,6 +26,11 @@ export class ActivitiesController {
     return this.activitiesService.findAll();
   }
 
+  @Get('lead/:leadId')
+  findAllByLeadId(@Param('leadId') leadId: string) {
+    return this.activitiesService.findByLeadId(leadId);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.activitiesService.findOne(id);

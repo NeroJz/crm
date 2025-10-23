@@ -83,6 +83,10 @@ export class ActivitiesService {
       throw new NotFoundException('Lead not found');
     }
 
+    if (lead.owner.id !== activity.user.id) {
+      throw new ForbiddenException(`Cannot assign lead that you do not own`);
+    }
+
     activity.lead = lead;
 
     return this.activityRepository.save(activity);
@@ -106,5 +110,15 @@ export class ActivitiesService {
     }
 
     return await this.activityRepository.remove(activity);
+  }
+
+  async findByLeadId(leadId: string) {
+    let activities = await this.activityRepository
+      .find({
+        where: { lead: { id: leadId } },
+        order: { activity_date: 'ASC' }
+      });
+
+    return activities;
   }
 }
