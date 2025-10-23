@@ -55,12 +55,16 @@ export class ActivitiesService {
     return activity;
   }
 
-  async update(id: string, updateActivityDto: UpdateActivityDto) {
+  async update(id: string, updateActivityDto: UpdateActivityDto, user: User) {
     let activity = await this.activityRepository
       .findOneBy({ id });
 
     if (!activity) {
       throw new NotFoundException('Activity not found');
+    }
+
+    if (activity.user.id !== user.id) {
+      throw new ForbiddenException(`Cannot update an activity that you do not own`);
     }
 
     Object.assign(activity, updateActivityDto);
